@@ -16,6 +16,7 @@
 
 
 前期实验中使用的Network Structure：
+
 ![net](../img/network_structure.png)
 
 除了V(s)与A(s, a)结合为Q(s, a)层之外，所有层之间皆增加了Layer Normalization层，以减轻优化压力。激活函数为relu。
