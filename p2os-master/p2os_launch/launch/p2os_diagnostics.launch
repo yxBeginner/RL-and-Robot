@@ -1,0 +1,4 @@
+<launch>
+  <include file="$(find p2os_launch)/diagnostics.xml"/>
+  <node name="robot_monitor" type="robot_monitor" pkg="robot_monitor"/>
+</launch>

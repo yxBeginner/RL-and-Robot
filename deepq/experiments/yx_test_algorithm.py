@@ -94,29 +94,18 @@ def main():
     actor_process_02 = Process(target=actor, args=(lock1, net_list, mem_queue, total_step, end_train_flag, update_flag, 2))
     actor_process_03 = Process(target=actor, args=(lock1, net_list, mem_queue, total_step, end_train_flag, update_flag, 3))
     actor_process_04 = Process(target=actor, args=(lock1, net_list, mem_queue, total_step, end_train_flag, update_flag, 4))
-    # actor_process_05 = Process(target=actor, args=(lock1, net_list, mem_queue, total_step, update_flag, 5))
-    # actor_process_06 = Process(target=actor, args=(lock1, net_list, mem_queue, total_step, update_flag, 6))
-    # actor_process_07 = Process(target=actor, args=(lock1, net_list, mem_queue, total_step, update_flag, 7))
-    # actor_process_08 = Process(target=actor, args=(lock1, net_list, mem_queue, total_step, update_flag, 8))
 
     train_process.start()
     actor_process_01.start()
     actor_process_02.start()
     actor_process_03.start()
     actor_process_04.start()
-    # actor_process_05.start()
-    # actor_process_06.start()
-    # actor_process_07.start()
-    # actor_process_08.start()
+
     train_process.join()
     actor_process_01.join()
     actor_process_02.join()
     actor_process_03.join()
     actor_process_04.join()
-    # actor_process_05.join()
-    # actor_process_06.join()
-    # actor_process_07.join()
-    # actor_process_08.join()
 
 
 if __name__ == '__main__':

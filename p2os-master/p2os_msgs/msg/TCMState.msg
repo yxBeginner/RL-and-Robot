@@ -1,0 +1,1 @@
+bool tcm_power

@@ -10,8 +10,6 @@ from deepq.models import mlp
 # from baselines.common.atari_wrappers import make_atari
 
 # 测试用环境
-
-
 def trainer(in_actor_deque, in_action_pipes):
     # 可以为learn过程设置终止条件
     env = gym.make("CartPole-v0")
@@ -42,9 +40,6 @@ def trainer(in_actor_deque, in_action_pipes):
         # prioritized_replay_beta0=0.4,
         # param_noise=True,
     )
-    # checkpoint_freq=10000,
-    # checkpoint_path='/home/yangxu/PycharmProjects/ros_inwork/baselines/deepq/experiments/pionner_save',
-    print("All end")
     # print("Saving model to cartpole_model.pkl")
     # act.save("cartpole_model.pkl")
     # act.save("MountainCar_model.pkl")

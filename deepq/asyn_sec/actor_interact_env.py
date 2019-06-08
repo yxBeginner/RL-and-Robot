@@ -22,27 +22,17 @@ def actor_inter(env, ac_num, actor_deque, action_pipes, print_freq):
         if reset is True:
             mem = (ac_num, None, None, obs, None, None)  # 此时的obs是新一轮的起始observation
             actor_deque.put(mem)
-        # print(str(ac_num)+" is in " + str(t)+"before")
         action = action_pipes.recv()
-        # print(str(ac_num) + " is in " + str(t)+"end")
         if action is 100:  # 训练结束,一个不存在的动作,指代训练结束
             break
-        # print(np.array(obs))
-        # print(act(np.array(obs)[None], update_eps=update_eps, **kwargs))
-        # print("action: "+str(action))
         reset = False
         new_obs, rew, done, _ = env.step(action)
-        # Store transition in the replay buffer.
-        # 这里直接将observation放入了buffer,DQN论文中则是将序列作为状态,也许是在atari_wrappers中已经做好了相关转换
-        # print(obs)
         mem = (ac_num, obs, action, new_obs, rew, done)
         actor_deque.put(mem)
-        # print(rew)
         obs = new_obs
         # 将即时回报加入回报序列
         episode_rewards[-1] += rew
         if done:
-            # print(str(ac_num) + " is done")
             obs = env.reset()
             episode_rewards.append(0.0)
             reset = True

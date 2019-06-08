@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+
+  <include file="$(find p2os_urdf)/launch/upload_pioneer3at.xml"/>
+  
+  <!-- publish TFs for static links -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+
+    <param name="publish_frequency" type="double" value="30.0"/>
+    <param name="tf_prefix" type="string" value=""/>
+ 
+  </node>
+
+  <!-- start Gazebo (TODO: add arguments) -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="spawn_pioneer" pkg="gazebo_ros" type="spawn_model" args="-z 0.051 -urdf -param robot_description -model robot_description" respawn="false" output="screen" />
+
+</launch>

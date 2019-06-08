@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="2">
+  <name>p2os_doc</name>
+  <version>2.1.0</version>
+  <description>
+    Contains the Documentation for the p2os driver/componenets
+  </description>
+
+  <maintainer email="hunter@openrobotics.org">Hunter L. Allen</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/p2os-purdue</url>
+  <url type="bugtracker">https://github.com/allenh1/p2os/issues/</url>
+  <url type="repository">https://github.com/allenh1/p2os/</url>
+
+  
+  <author email="hunter@openrobotics.org">Hunter L. Allen</author>
+  <author email="dfseifer@usc.edu">David Feil-Seifer</author>
+  <author email="asynodin@mech.upatras.gr">Aris Synodinos</author>
+  <author>Brian Gerkey</author>
+  <author>Kasper Stoy</author>
+  <author>Richard Vaughan</author>
+  <author>Andrew Howard</author>
+  <author>Tucker Hermans</author>
+  <author>ActivMedia Robotics LLC</author>
+  <author>MobileRobots Inc.</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+</package>

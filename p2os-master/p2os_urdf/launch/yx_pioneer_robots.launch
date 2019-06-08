@@ -1,0 +1,48 @@
+<launch>
+  <!-- No namespace here as we will share this description. 
+       Access with slash at the beginning -->
+
+  <!-- BEGIN ROBOT 1-->
+  <group ns="robot1">
+  <!-- send table.xml to param server -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find p2os_urdf)/defs/ns_pioneer3dx_body.xacro ns:=robot1" />
+    <param name="tf_prefix" value="robot1_tf" />
+    <include file="$(find p2os_urdf)/launch/yx_pioneer.launch" >
+      <arg name="init_pose" value="-x 0 -y 0 -z 0" />
+      <arg name="robot_name"  value="robot1" />
+    </include>
+  </group>
+
+  <!-- BEGIN ROBOT 2-->
+  <group ns="robot2">
+  <!-- send table.xml to param server -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find p2os_urdf)/defs/ns_pioneer3dx_body.xacro ns:=robot2" />
+    <param name="tf_prefix" value="robot2_tf" />
+    <include file="$(find p2os_urdf)/launch/yx_pioneer.launch" >
+      <arg name="init_pose" value="-x -8 -y 5 -z 0" />
+      <arg name="robot_name"  value="robot2" />
+    </include>
+  </group>
+
+  <!-- BEGIN ROBOT 3-->
+  <group ns="robot3">
+  <!-- send table.xml to param server -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find p2os_urdf)/defs/ns_pioneer3dx_body.xacro ns:=robot3" />
+    <param name="tf_prefix" value="robot3_tf" />
+    <include file="$(find p2os_urdf)/launch/yx_pioneer.launch" >
+      <arg name="init_pose" value="-x 6 -y -8 -z 0" />
+      <arg name="robot_name"  value="robot3" />
+    </include>
+  </group>
+
+  <!-- BEGIN ROBOT 4-->
+  <group ns="robot4">
+  <!-- send table.xml to param server -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find p2os_urdf)/defs/ns_pioneer3dx_body.xacro ns:=robot4" />
+    <param name="tf_prefix" value="robot4_tf" />
+    <include file="$(find p2os_urdf)/launch/yx_pioneer.launch" >
+      <arg name="init_pose" value="-x -7 -y -7 -z 0" />
+      <arg name="robot_name"  value="robot4" />
+    </include>
+  </group>
+</launch>

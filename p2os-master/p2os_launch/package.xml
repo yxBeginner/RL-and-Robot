@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://wwww.w3.org/2001/XMLSchema"?>
+<package format="2">
+  <name>p2os_launch</name>
+  <version>2.1.0</version>
+  <description>Launch and config files designed for use with the p2os stack.</description>
+
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/p2os-purdue</url>
+
+  <maintainer email="hunter@openrobotics.org">Hunter L. Allen</maintainer>
+
+  <author email="hunter@openrobotics.org">Hunter L. Allen</author>
+  <author email="dfseifer@usc.edu">David Feil-Seifer</author>
+  <author>Brian Gerkey</author>
+  <author>Kasper Stoy</author>
+  <author>Richard Vaughan</author>
+  <author>Andrew Howard</author>
+  <author>Tucker Hermans</author>
+  <author>ActivMedia Robotics LLC</author>
+  <author>MobileRobots Inc.</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>p2os_driver</exec_depend>
+  <exec_depend>p2os_msgs</exec_depend>
+  <exec_depend>p2os_urdf</exec_depend>
+  <exec_depend>p2os_teleop</exec_depend>
+</package>

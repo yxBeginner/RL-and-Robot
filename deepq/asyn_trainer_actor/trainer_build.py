@@ -82,7 +82,6 @@ def build_train(make_obs_ph, q_func, num_actions, optimizer, grad_norm_clipping=
         q_func_vars = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope=tf.get_variable_scope().name + "/q_func")
         q_tp1 = q_func(obs_tp1_input.get(), num_actions, scope="target_q_func")
         target_q_func_vars = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope=tf.get_variable_scope().name + "/target_q_func")
-
         # q scores for actions which we know were selected in the given state.
         q_t_selected = tf.reduce_sum(q_t * tf.one_hot(act_t_ph, num_actions), 1)
 
@@ -138,7 +137,7 @@ def build_train(make_obs_ph, q_func, num_actions, optimizer, grad_norm_clipping=
         update_target_expr = tf.group(*update_target_expr)  # tf.group()将语句变为操作？
 
         # 因为是单进程写,多进程读,所以将两种操作分别应用于不同内存区域上,降低lock竞争,仍然有一些不够合理的地方
-        # yx_add 初始化actor的q网络
+        # 初始化actor的q网络
         def init_actor_qfunc(sess, net_list):
             # 需要tf.variable_scope(scope, reuse=reuse):　因而写在这里
             # 或使用tf.get_default_session()(不可用上下文管理器)
@@ -155,28 +154,17 @@ def build_train(make_obs_ph, q_func, num_actions, optimizer, grad_norm_clipping=
                 #     net_list.append(var_actor.eval(session=sess))
                 gc.collect()  # 释放内存, python3.5 应该不需要
                 # net_list_lock.release()  # 释放锁
-        # yx_add_end
 
         len_q_func = len(q_func_vars)
 
-        # yx_add 更新actor的q网络
+        # 更新actor的q网络
         def update_actor_qfunc(sess, net_list, net_list_lock):
-            # 或使用tf.get_default_session()(不可用上下文管理器)
             with sess.as_default():
                 net_list_lock.acquire()
                 for i_tensor in range(len_q_func):
                     net_list[i_tensor] = q_func_vars[i_tensor].eval(session=sess)
-                # for i_tensor in range(len_q_func):
-                #     net_list[i_tensor+net_list_index.value*len_q_func] = q_func_vars[i_tensor].eval(session=sess)
-                # 修改index
-                # if net_list_index.value == 0:
-                #     net_list_index.value += 1  # 1
-                # else:
-                #     net_list_index.value -= 1  # 0
                 net_list_lock.release()  # 释放锁
-        # yx_add_end
 
-        # print(update_target_expr)
         # 下面三个function分别为整合 train、 update_target 、 q_values
         # Create callable functions
         train = U.function(

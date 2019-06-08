@@ -1,5 +1,4 @@
 # 测试训练单个robot
-
 from baselines import deepq
 from baselines.common import set_global_seeds
 from baselines import bench
@@ -27,7 +26,6 @@ def main():
     env = gym.make(args.env)
     # env = bench.Monitor(env, logger.get_dir()) 
     # env = deepq.wrap_atari_dqn(env)
-
     # model = deepq.models.mlp([512, 512], [256], dueling=bool(args.dueling), layer_norm=True)  # [512, 512, 512]
     model = deepq.models.mlp([512, 512, 512], layer_norm=True)  # [512, 512, 512]
 

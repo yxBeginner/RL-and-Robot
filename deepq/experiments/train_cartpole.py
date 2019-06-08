@@ -28,8 +28,5 @@ def main():
     print("Saving model to cartpole_model.pkl")
     act.save("cartpole_model.pkl")
 
-
-# 如果该文件被当作module,则其__name__则为'train_cartpole',那么这里就不会被执行
-# 如果直接执行该文件,那么其__name__为'__main__',main()就会被执行
 if __name__ == '__main__':
     main()

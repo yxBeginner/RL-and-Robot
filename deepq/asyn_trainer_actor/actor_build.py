@@ -5,7 +5,6 @@ import baselines.common.tf_util as U
 from baselines.deepq.build_graph import build_act, build_act_with_param_noise
 # from multiprocessing import Process, Manager, Lock
 
-
 # (注意只是实现功能定义,并不需要真实参数,关于Manager\Lock还有待考虑)
 def actor_build(make_obs_ph, q_func, num_actions, net_list,
                 scope="actor_deepq", reuse=None, param_noise=False, param_noise_filter_func=None):
@@ -17,12 +16,10 @@ def actor_build(make_obs_ph, q_func, num_actions, net_list,
                                            param_noise_filter_func=param_noise_filter_func)
     else:
         act_f = build_act(make_obs_ph, q_func, num_actions, scope=scope, reuse=reuse)
-
     # 与build不同, actor只需要前向传播即可
     with tf.variable_scope(scope, reuse=reuse):
         # set up placeholders
         obs_t_input = make_obs_ph("obs_t")
-
         # 创建Q network, 返回所有action 的q值(q_func()) , q_t是一个列表
         # q network evaluation
         q_t = q_func(obs_t_input.get(), num_actions, scope="q_func", reuse=True)  # reuse parameters from act
@@ -31,11 +28,9 @@ def actor_build(make_obs_ph, q_func, num_actions, net_list,
         q_func_vars = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES,
                                         scope=tf.get_variable_scope().name + "/q_func")
         # 将q_func_vars 写到update_qfunc()下就无效了,why?
-
         placeholder_list = []
         for item in net_list:
             placeholder_list.append(tf.placeholder(tf.float32, shape=item.shape))
-
         # 不要将op定义到循环下去,会造成内存泄漏
         update_qfunc_op = list()
         for var, var_target in zip(placeholder_list, q_func_vars):
@@ -45,7 +40,6 @@ def actor_build(make_obs_ph, q_func, num_actions, net_list,
         len_qfunc = len(update_qfunc_op)
 
         def update_qfunc(sess, net_list_lock):
-            # print('update_qfunc')
             # 需要tf.variable_scope(scope, reuse=reuse):　
             # 或使用tf.get_default_session()(不可用上下文管理器)
             with sess.as_default():
@@ -60,7 +54,6 @@ def actor_build(make_obs_ph, q_func, num_actions, net_list,
                 #     print(next_var_target.eval(session=sess))
                 # print(net_list)
                 net_list_lock.release()  # 释放
-            # print('end_update_qfunc')
 
         # 下面是几个不同的实现版本,或多或少的有一些问题
         # start right

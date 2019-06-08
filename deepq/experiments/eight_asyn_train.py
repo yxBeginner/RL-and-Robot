@@ -31,10 +31,6 @@ def trainer(lock1, net_list, mem_queue, total_step, end_train_flag, update_flag)
     logger.configure()
     set_global_seeds(args.seed)
     env = gym.make(args.env)
-    # env = bench.Monitor(env, logger.get_dir())  # 这里的作用暂时没看
-    # env = deepq.wrap_atari_dqn(env)
-    # 这里使用了3个卷积层,两个全连接层（第一个全连接层为num_convs*hiddens,第二层为hiddens*num_action）
-    # 注意卷积层的输入应为矩阵而不是向量,要么将CNN换成mlp,要么用RNN
     # model = deepq.models.cnn_to_mlp(
     #     convs=[(32, 8, 4), (64, 4, 2), (64, 3, 1)],
     #     hiddens=[256],
@@ -81,16 +77,12 @@ def actor(lock1, net_list, mem_queue, total_step, end_train_flag, update_flag, a
     set_global_seeds(acargs.acseed)
     set_gpw_num(actor_num)  # 设置环境号
     acenv = gym.make(acargs.acenv)
-    # env = bench.Monitor(env, logger.get_dir())  # 这里的作用暂时没看
-    # env = deepq.wrap_atari_dqn(env)
-    # 这里使用了3个卷积层,两个全连接层（第一个全连接层为num_convs*hiddens,第二层为hiddens*num_action）
-    # 注意卷积层的输入应为矩阵而不是向量,要么将CNN换成mlp,要么用RNN
     # model = deepq.models.cnn_to_mlp(
     #     convs=[(32, 8, 4), (64, 4, 2), (64, 3, 1)],
     #     hiddens=[256],
     #     dueling=bool(args.dueling),
     # )
-
+    
     # early model [512,512,256], [128]
     model = mlp([256, 256, 128], [64], dueling=bool(acargs.acdueling), layer_norm=True)  # [512, 512, 512]
 

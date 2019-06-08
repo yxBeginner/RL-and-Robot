@@ -1,0 +1,8 @@
+<launch>
+	<include file="$(find pr2_teleop)/teleop_keyboard.launch" />
+	<include file="$(find p2os_launch)/teleop_joy.launch" />
+	<param name="/spawn_teleop_keyboard/walk_vel" value="0.25" />
+    <param name="/spawn_teleop_keyboard/run_vel" value="0.5" />
+    <param name="/spawn_teleop_keyboard/yaw_rate" value="0.5" />
+    <param name="/spawn_teleop_keyboard/yaw_run_rate" value="0.75" />
+</launch>

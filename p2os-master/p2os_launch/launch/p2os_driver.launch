@@ -1,0 +1,4 @@
+<launch>
+	<!-- run p2os to control the pioneer -->
+	<node pkg="p2os_driver" type="p2os_driver" name="p2os_driver" />
+</launch>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find p2os_urdf)/launch/upload_pioneer3dx.xml"/>
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="30.0"/>
+    <param name="tf_prefix" type="string" value=""/>
+  </node>
+
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find p2os_urdf)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find p2os_urdf)/launch/random_shape_world.world"/> <!-- Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable -->
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/> <!-- Inert - see gazebo_ros_pkgs issue #491 -->
+    <arg name="recording" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="spawn_pioneer" pkg="gazebo_ros" type="spawn_model" args="-z 0.1 -urdf -param robot_description -model robot_description" respawn="false" output="screen" />
+
+</launch>

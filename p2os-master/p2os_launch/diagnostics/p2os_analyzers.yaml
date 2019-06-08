@@ -1,0 +1,20 @@
+pub_rate: 1.0 # Optional
+base_path: "" # Optional  
+analyzers:
+  sensors:
+    type: AnalyzerGroup
+    path: Sensors
+    analyzers:
+      p2os:
+        type: GenericAnalyzer
+        path: p2os 
+        find_and_remove_prefix: p2os
+        num_items: 3
+  #computers:
+  #  type: GenericAnalyzer
+  #  path: Computers
+  #  contains: [
+  #    'CPU Usage',
+  #    'CPU Temperature'
+  #    ]
+

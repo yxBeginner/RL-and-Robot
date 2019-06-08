@@ -180,9 +180,6 @@ def learn(
     sess = tf.Session()
     sess.__enter__()
 
-    # capture the shape outside the closure so that the env object is not serialized
-    # by cloudpickle when serializing make_obs_ph
-
     def make_obs_ph(name):
         return ObservationInput(env.observation_space, name=name)
 
@@ -268,7 +265,6 @@ def learn(
                     # obs = env.reset()
                     # episode_rewards.append(0.0)
                     reset = True
-                    # print("ac_num " + str(ac_num) + " done")
                 else:
                     # Take action and update exploration to the newest value
                     kwargs = {}
@@ -297,7 +293,6 @@ def learn(
                             #  np.ones_like() : Return an array of ones with the same shape and type as a given array.
                             weights, batch_idxes = np.ones_like(rewards), None
                         td_errors = train(obses_t, actions, rewards, obses_tp1, dones, weights)
-                        # print(td_errors)
                         if prioritized_replay:
                             new_priorities = np.abs(td_errors) + prioritized_replay_eps
                             replay_buffer.update_priorities(batch_idxes, new_priorities)

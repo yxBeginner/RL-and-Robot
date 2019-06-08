@@ -55,10 +55,6 @@ class MemBufferThread(threading.Thread):
     def update_priorities(self, td_errors):
         new_priorities = np.abs(td_errors) + self.prioritized_replay_eps
         self.replay_buffer.update_priorities(self.batch_idxes, new_priorities)
-        # print('batch_idxes : ')
-        # print(self.batch_idxes)
-        # print('new_priorities : ')
-        # print(new_priorities)
 
     def run(self):
         # flag = 1

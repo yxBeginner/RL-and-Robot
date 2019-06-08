@@ -10,8 +10,6 @@ from deepq.asyn_trainer_actor.trainer_simple import learn
 from deepq.asyn_trainer_actor.new_models import mlp
 from p2os_test.src.asyn_gpw_num import set_gpw_num
 # from p2os_test.src.set_actor_num import set_gpw_num
-# from baselines.common.atari_wrappers import make_atari
-
 
 def trainer(lock1, net_list, mem_queue, total_step, update_flag):
     # 可以为learn过程设置终止条件
@@ -25,7 +23,6 @@ def trainer(lock1, net_list, mem_queue, total_step, update_flag):
     parser.add_argument('--checkpoint-freq', type=int, default=None)
     # parser.add_argument('--checkpoint-freq', type=int, default=10000)
     parser.add_argument('--checkpoint-path', type=str, default=None)
-    # parser.add_argument('--checkpoint-path', type=str, default='/home/yangxu/PycharmProjects/ros_inwork/baselines/deepq/experiments/pionner_save')
 
     args = parser.parse_args()
     logger.configure()
@@ -41,7 +38,7 @@ def trainer(lock1, net_list, mem_queue, total_step, update_flag):
     #     dueling=bool(args.dueling),
     # )
 
-    model = mlp([512, 512, 256], [128], dueling=bool(args.dueling), layer_norm=True)  # [512, 512, 512]
+    model = mlp([512, 512, 256], [128], dueling=bool(args.dueling), layer_norm=True)
 
     learn(
         update_flag=update_flag,
@@ -80,10 +77,6 @@ def actor(lock1, net_list, mem_queue, total_step, update_flag, actor_num):
     set_global_seeds(acargs.acseed)
     set_gpw_num(actor_num)  # 设置环境号
     acenv = gym.make(acargs.acenv)
-    # env = bench.Monitor(env, logger.get_dir())  # 这里的作用暂时没看
-    # env = deepq.wrap_atari_dqn(env)
-    # 这里使用了3个卷积层,两个全连接层（第一个全连接层为num_convs*hiddens,第二层为hiddens*num_action）
-    # 注意卷积层的输入应为矩阵而不是向量,要么将CNN换成mlp,要么用RNN
     # model = deepq.models.cnn_to_mlp(
     #     convs=[(32, 8, 4), (64, 4, 2), (64, 3, 1)],
     #     hiddens=[256],

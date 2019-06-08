@@ -1,0 +1,6 @@
+<launch>
+	<node pkg="sicktoolbox_wrapper" type="sicklms" name="sicklms_node" >
+		<param name="port" type="string" value="/dev/ttyUSB0" />
+		<param name="baud" type="int" value="38400" />
+	</node>
+</launch>

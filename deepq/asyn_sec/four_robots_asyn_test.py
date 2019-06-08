@@ -9,9 +9,6 @@ from deepq.models import mlp
 # from p2os_test.src.seventh_edition_gpw import set_gpw_num
 from p2os_test.src.sixth_edition_gpw import set_gpw_num
 from baselines.common import set_global_seeds
-# from baselines.common.atari_wrappers import make_atari
-
-# 测试用环境
 
 
 def trainer(in_actor_deque, in_action_pipes):
@@ -43,8 +40,6 @@ def trainer(in_actor_deque, in_action_pipes):
         # prioritized_replay_beta0=0.4,
         # param_noise=True,
     )
-    # checkpoint_freq=10000,
-    # checkpoint_path='/home/yangxu/PycharmProjects/ros_inwork/baselines/deepq/experiments/pionner_save',
     print("All end")
     print("Saving model")
     act.save("asyn_rob_model.pkl")

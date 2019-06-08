@@ -1,0 +1,7 @@
+<launch>
+    <group ns="pioneer">
+        <param name="pulse" value=1.0>
+        <param name="use_sonar" value=true>
+        <node pkg="p2os_driver" name="p2os" type="p2os">
+    </group>
+</launch>

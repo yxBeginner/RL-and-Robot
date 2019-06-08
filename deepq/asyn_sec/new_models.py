@@ -2,7 +2,7 @@ import tensorflow as tf
 import tensorflow.contrib.layers as layers
 
 
-# Multi-layer Perceptron, 已被yx修改
+# Multi-layer Perceptron, yx
 def _mlp(fcs, duel_layer, dueling, inpt, num_actions, scope, reuse=False, layer_norm=False):
     with tf.variable_scope(scope, reuse=reuse):
         out = inpt

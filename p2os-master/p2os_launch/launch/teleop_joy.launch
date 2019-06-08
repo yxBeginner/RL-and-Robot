@@ -1,0 +1,14 @@
+<launch>
+	<!-- run the teleop node to send movement velocities to the pioneer -->
+	<param name="axis_vx" type="int" value="1" />
+	<param name="axis_vw" type="int" value="2" />
+	<param name="axis_vy" type="int" value="0" />
+	<param name="deadman_button" type="int" value="5" />
+	<param name="run_button" type="int" value="4" />
+	<node pkg="p2os_teleop" type="p2os_teleop" name="p2os_teleop" >
+		<remap from="/des_vel" to="/base_controller/command" />
+	</node>
+	
+	<!-- run a joy node to control the pioneer -->
+	<node pkg="joy" type="joy_node" name="pioneer_joy_controller" />
+</launch>
