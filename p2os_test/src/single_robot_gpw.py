@@ -23,6 +23,7 @@ def set_gpw_num(num):
     global ac_num
     ac_num = num
 
+# 1. 单机器人的训练模型, 在环境中无大量复杂障碍物状态下, 可以取得较佳的效果
 # 2.将reward进行分段设置
 # 3.修改action作用方式,(1)不能speed为持久状态,(2)使用某种移动作为action
 
@@ -345,9 +346,6 @@ class SingleRobGpw(gym.Env):
     def get_rid_of_bad_data(self):
         for i in range(self.num_laser):
             if self.sample_laser_data[i] < 0.3:
-                # print("check")
-                # print(self.sample_laser_data)
-                # print(self.last_laser_data)
                 self.sample_laser_data[i] = self.last_laser_data[i]
             else:
                 pass
@@ -359,4 +357,3 @@ class SingleRobGpw(gym.Env):
 
     def close(self):
         pass
-        # self.thread1.join()  # 还是不对

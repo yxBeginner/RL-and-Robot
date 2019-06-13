@@ -1,3 +1,0 @@
-<launch>
-  <node name="rostopic" pkg="rostopic" type="rostopic" args="pub -1 /cmd_motor_state p2os_driver/MotorState 1"/>
-</launch>

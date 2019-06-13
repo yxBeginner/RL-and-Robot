@@ -25,7 +25,7 @@ class Model(object):
 
         act_model = policy(sess, ob_space, ac_space, nbatch_act, 1, reuse=False)
         # 和构建action model类似，构建用于训练的网络train_model.nbatch_train为256,因为是用于模型的学习,
-        # 因此和act_model不同，这儿网络输入的batch size为256.
+        # 因此和act_model不同，这里网络输入的batch size为256.
         train_model = policy(sess, ob_space, ac_space, nbatch_train, nsteps, reuse=True)
 
         A = train_model.pdtype.sample_placeholder([None])  # action

@@ -1,8 +1,10 @@
 # 异步 RL 模型
 
-由于在真实环境中或 gazebo 仿真环境下（ROS的发布订阅模式），robot的控制命令需要控制在固定的频率下，以避免出现超出robot的实际物理限制的情况，而将Q network的优化过程、priority replay memory 的优先级更新等过程与robot的神经网络控制器前向传播过程结合在一起，会造成计算时间上的不确定性。而且由于robot的控制命令通常需要控制在较低的固定频率下，神经网络的优化将不得不限制在该频率下，这无疑是浪费时间的。
+**Asynchronous Off-Policy Deep Reinforcement Learning For Wheeled Robot Path Planning**
 
-理论上每个CPU核心负责处理一个actor（robot）与环境交互的所有过程，每次交互得到的单个经验将发送至replay memory。Trainer 则从replay memory 中提取一个批次的memory，并在GPU上执行神经网络的优化过程。
+由于在真实环境中或 gazebo 仿真环境下（ROS的发布订阅模式），robot的控制命令需要控制在固定的频率下，以避免出现超出robot的实际物理限制的情况，而将Q network的优化过程、priority replay memory 的优先级更新等过程与robot的神经网络控制器前向传播过程结合在一起，会造成计算时间上的不确定性。此外, 由于robot的控制命令通常需要控制在较低的固定频率下，神经网络的优化将不得不限制在该频率下，这无疑是浪费时间的。一个直接的想法是将训练神经网络的步骤同智能体与环境交互的步骤分离.
+
+一个Actor负责处理一个robot与环境交互的所有过程，每次交互得到的单个经验将发送至replay memory。Trainer 则从replay memory 中提取一个批次的memory，并在GPU上执行神经网络的优化过程。
 
 尝试将原始DQN扩展成为Rainbow DQN, 改进包括：
 1. Double Q-Learning 代码已实现，经典环境下运行正常;

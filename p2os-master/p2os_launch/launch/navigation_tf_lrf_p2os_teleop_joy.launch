@@ -1,6 +1,0 @@
-<launch>
-	<include file="$(find p2os_launch)/navigation.launch" />
-	
-	<!-- run corequisites -->
-	<include file="$(find p2os_launch)/tf_lrf_p2os_teleop_joy.launch" />
-</launch>

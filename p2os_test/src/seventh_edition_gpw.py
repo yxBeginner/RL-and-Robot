@@ -265,27 +265,6 @@ class SeventhRobGpw(gym.Env):
             self.gazebo_robot_angle -= 0.05
         else:
             gym.logger.warn("Unknown situation !")
-        # if action == 0:
-        #     self.gazebo_robot_speed = 0.10  # 速度不能突然设置为特别大的数,否则会失控,不能超过0.1了
-        #     # self.action_0 = True
-        # elif action == 1:
-        #     self.gazebo_robot_speed = 0.0
-        #     # self.action_0 = False
-        # # elif action == 2:
-        # #     self.gazebo_robot_speed = 0.0
-        # elif action == 2:
-        #     self.gazebo_robot_angle = +0.10
-        #     # self.action_0 = False
-        # elif action == 3:
-        #     self.gazebo_robot_angle = -0.10
-        #     # self.action_0 = False
-        # # elif action == 5:
-        # #     self.gazebo_robot_angle = 0.0
-        # elif action == 4:
-        #     self.gazebo_robot_angle = 0
-        #     # self.action_0 = False
-        # else:
-        #     gym.logger.warn("Unknown situation !")
 
         self.gazebo_robot_speed = np.clip(self.gazebo_robot_speed, self.min_speed, self.max_speed)
         self.gazebo_robot_angle = np.clip(self.gazebo_robot_angle, self.min_angle, self.max_angle)

@@ -1,1 +1,0 @@
-bool arm_power

@@ -1,7 +1,0 @@
-<map id="p2os.h" name="p2os.h">
-<area shape="rect" id="node6" href="$packet_8h.html" title="p2os_driver/packet.h" alt="" coords="315,171,457,197"/>
-<area shape="rect" id="node8" href="$robot__params_8h.html" title="p2os_driver/robot_params.h" alt="" coords="718,171,900,197"/>
-<area shape="rect" id="node21" href="$sip_8h.html" title="sip.h" alt="" coords="2680,88,2731,115"/>
-<area shape="rect" id="node24" href="$kinecalc_8h.html" title="kinecalc.h" alt="" coords="2755,88,2836,115"/>
-<area shape="rect" id="node26" href="$p2os__ptz_8h.html" title="p2os_ptz.h" alt="" coords="534,88,620,115"/>
-</map>

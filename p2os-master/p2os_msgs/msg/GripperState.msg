@@ -1,2 +1,0 @@
-GripState grip
-LiftState lift

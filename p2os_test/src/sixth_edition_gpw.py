@@ -73,16 +73,7 @@ def reset_node_init():
     return pub, new_obstacle_state
 
 
-# def correct_coordinate_func():
-#     if enable_correction:
-#         def this_func(input_value):
-#             return abs(input_value)
-#     else:
-#         def this_func(input_value):
-#             return input_value
-#     return this_func
-
-
+# 为了方便观察, 设定一组固定的目标点, 最后会恢复为随机状态
 # 没有0号robot
 # 有障碍物的空间
 # goal_sequence = [[(0.0, 0.0), (0.0, 0.0), (0.0, 0.0)],

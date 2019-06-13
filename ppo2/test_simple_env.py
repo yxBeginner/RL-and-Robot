@@ -35,8 +35,6 @@ def main():
     parser = atari_arg_parser()
     parser.add_argument('--policy', help='Policy architecture', choices=['cnn', 'lstm', 'lnlstm', 'mlp'], default='cnn')
     args = parser.parse_args()
-    # 这个项目中实现了简单的日志系统,其中日志所在目录和格式可以用过OPENAI_LOGDIR和OPENAI_LOG_FORMAT两个环境
-    # 变量控制,实现类Logger中主要有两个字典：name2val和name2cnt。它们分别是名称到值和计数的映射。
     logger.configure()
     train(args.env, num_timesteps=args.num_timesteps, seed=args.seed,
         policy=args.policy)
