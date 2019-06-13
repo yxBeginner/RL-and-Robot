@@ -15,8 +15,7 @@
 * [p2os_urdf](./p2os_urdf) 修动后的机器人模型与模拟世界地图等, 其它部分来自[p2os](http://wiki.ros.org/p2os), 但这是为`groovy`版本设计的, 有些东西在`Kinetic Kame`下不能正常运行, 该目录下对其进行了修改. 添加了激光模型, 修改了3d模型的位置, 仿真定位, 差速控制等.
 
 ### 运行环境
-该仓库的代码运行环境为 `Ubuntu 16.04`，`ROS Kinetic Kame`，`gazebo 7.0.0`, `tensorflow 1.8` .
-
+该仓库的代码运行环境为 `Ubuntu 16.04`，`ROS Kinetic Kame`，`gazebo 7.0.0`, `tensorflow 1.8` . 单机情景.
 ### TODO(yx):
 - [ ] 为了方便理解代码以及修改, 代码中留下了大量的注释, 所以部分代码会显得有些凌乱.
 - [ ] 代码结构缺少整理, 需要进一步完善.
