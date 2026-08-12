@@ -1,3 +1,5 @@
+
+
 # Deep Reinforcement Learning and Path Planning
 
 ### 简介
@@ -12,7 +14,7 @@
   - [asyn_sec](./deepq/asyn_sec) 一些精简过的模型, 还有多Actor单Trainer的同步训练模型, 其中包含了训练好的模型(`.pkl`).
 * [ppo2](./ppo2) `Proximal Policy Optimization`（近端策略优化), Baselines的代码, 个人对一些关键部分进行了注释.
 * [p2os_test](./p2os_test) 主要是对强化学习环境的封装. 其中包含了诸多版本, 每种环境的定义都或多或少有一些不同之处, 包括状态空间/动作空间/奖赏函数的设计/命令传递/数据服务的处理等, 在每个版本的开始部分都进行了简单的介绍. 启动环境后, 会到ROS core注册监听相关的数据服务, 所有操作符合ROS的流程.
-* [p2os_urdf](./p2os_urdf) 修动后的机器人模型与模拟世界地图等, 其它部分来自[p2os](http://wiki.ros.org/p2os), 但这是为`groovy`版本设计的, 有些东西在`Kinetic Kame`下不能正常运行, 该目录下对其进行了修改. 添加了激光模型, 修改了3d模型的位置, 仿真定位, 差速控制等.
+* [p2os_urdf](./p2os_urdf) 修改后的机器人模型与模拟世界地图等, 其它部分来自[p2os](http://wiki.ros.org/p2os), 但这是为`groovy`版本设计的, 有些东西在`Kinetic Kame`下不能正常运行, 该目录下对其进行了修改. 添加了激光模型, 修改了3d模型的位置, 仿真定位, 差速控制等.
 
 ### 运行环境
 该仓库的代码运行环境为 `Ubuntu 16.04`，`ROS Kinetic Kame`，`gazebo 7.0.0`, `tensorflow 1.8` . 单机情景.
@@ -23,4 +25,3 @@
 
 *该项目由于不可抗力, 最终未能完成 : )*
 *开发过程中有很多被否定的方案, 但有一些仍然有价值, 全部都放在这里, 留作参考.*
-
